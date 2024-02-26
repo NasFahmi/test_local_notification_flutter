@@ -49,8 +49,8 @@ class NotificationService {
         id,
         title,
         body,
-        tz.TZDateTime.now(tz.getLocation(currentTimeZone))
-            .add(Duration(seconds: 1)),
+        tz.TZDateTime.from(
+            scheduledNotificationDateTime, tz.getLocation(currentTimeZone)),
         await notificationDetails(),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
