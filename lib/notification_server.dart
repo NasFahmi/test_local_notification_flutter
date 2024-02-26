@@ -9,7 +9,7 @@ class NotificationService {
 
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettingsAndroid =
-        const AndroidInitializationSettings('flutter_logo');
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
 
     var initializationSettingsIOS = DarwinInitializationSettings(
         requestAlertPermission: true,
@@ -49,7 +49,8 @@ class NotificationService {
         id,
         title,
         body,
-        tz.TZDateTime.now(tz.getLocation(currentTimeZone)),
+        tz.TZDateTime.now(tz.getLocation(currentTimeZone))
+            .add(Duration(seconds: 1)),
         await notificationDetails(),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
